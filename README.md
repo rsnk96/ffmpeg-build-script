@@ -1,12 +1,12 @@
 [![Build Status](https://travis-ci.org/markus-perl/ffmpeg-build-script.svg?branch=master)](https://travis-ci.org/markus-perl/ffmpeg-build-script)
 
-![Image of Yaktocat](https://raw.github.com/markus-perl/ffmpeg-build-script/master/ffmpeg-build-script.png)
+![FFmpeg build script](https://raw.github.com/markus-perl/ffmpeg-build-script/master/ffmpeg-build-script.png)
 
 
 build-ffmpeg
 ==========
 
-The FFmpeg build script provides an easy way to build a static ffmpeg on **OSX** and **Linux** with **non-free codecs** included.
+The FFmpeg build script provides an easy way to build a static FFmpeg on **OSX** and **Linux** with **non-free codecs** included.
 
 
 [![How-To build FFmpeg on OSX](http://img.youtube.com/vi/Z9p3mM757cM/0.jpg)](http://www.youtube.com/watch?v=Z9p3mM757cM "How-To build FFmpeg on OSX")
@@ -22,6 +22,7 @@ because I don't have the resources and the time to maintain other systems.
 ## Supported Codecs
 * x264: H.264 (MPEG-4 AVC)
 * x265: H.265 Video Codec
+* aom: AV1 Video Codec (Experimental and very slow!)
 * fdk_aac: Fraunhofer FDK AAC Codec 
 * xvidcore: MPEG-4 video coding standard
 * webm: WebM is a video file format
@@ -29,6 +30,7 @@ because I don't have the resources and the time to maintain other systems.
 * ogg: Free, open container format
 * vorbis: Lossy audio compression format
 * theora: Free lossy video compression format
+* opus: Lossy audio coding format
 
 ## Continuos Integration
 ffmpeg-build-script is rockstable. Every commit runs against Linux and OSX with https://travis-ci.org just to make sure everything works as expected.
@@ -36,7 +38,7 @@ ffmpeg-build-script is rockstable. Every commit runs against Linux and OSX with 
 Requirements OSX
 ------------
 
-* XCode 5.x or greater
+* XCode 10.x or greater
 
 Requirements Linux
 ------------
@@ -63,6 +65,15 @@ bash <(curl -s "https://raw.githubusercontent.com/markus-perl/ffmpeg-build-scrip
 ```
 This command downloads the build script and automatically starts the build process.
 
+### Run with Docker
+
+```bash
+git clone https://github.com/markus-perl/ffmpeg-build-script.git
+cd ffmpeg-build-script
+docker build --tag=ffmpeg .
+docker run  ffmpeg -i http://files.coconut.co.s3.amazonaws.com/test.mp4 -f webm -c:v libvpx -c:a libvorbis - > /tmp/test.mp4
+```
+
 ### Common installation
 
 ```bash
@@ -83,14 +94,14 @@ Usage
 Contact
 -------
 
-* Github: [http://www.github.com/markus-perl](http://www.github.com/markus-perl)
+* Github: [http://www.github.com/markus-perl/](https://github.com/markus-perl/ffmpeg-build-script)
 
 
 Tested on
 ---------
 
-* Mac OSX 10.13 64Bit XCode 9.3
-* Debian 9.4
+* Mac OSX 10.14 64Bit XCode 11.0
+* Debian 9.11
 
 Example
 -------
@@ -225,3 +236,12 @@ Building done. The binary can be found here: /Volumes/Daten/dev/mac/ffmpeg-build
 Install the binary to your /usr/local/bin folder? [Y/n] y
 Password:
 ```
+
+Other Projects Of Mine
+------------
+- [Pushover CLI Client](https://github.com/markus-perl/pushover-cli)
+- [Gender API](https://gender-api.com): [Genderize A Name](https://gender-api.com)
+- [Gender API Client PHP](https://github.com/markus-perl/gender-api-client)
+- [Gender API Client NPM](https://github.com/markus-perl/gender-api-client-npm)
+- [Genderize Names](https://www.youtube.com/watch?v=2SLIAguaygo)
+- [Genderize API](https://gender-api.io)
